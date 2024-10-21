@@ -2,6 +2,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
+// Import Bulma CSS
+import 'bulma/css/bulma.css'
+
 // Import Vue Flow styles
 import '@vue-flow/core/dist/style.css'
 import '@vue-flow/core/dist/theme-default.css'

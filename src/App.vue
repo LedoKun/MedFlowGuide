@@ -2,7 +2,9 @@
 <template>
   <div id="app">
     <vue-flow ref="vueFlowRef" :nodes="nodes" :edges="edges" :fit-view="false" :zoom-on-scroll="true"
-      :pan-on-drag="true" @nodes-change="onNodesChange" class="vue-flow">
+      :pan-on-drag="true" class="vue-flow">
+      <!-- <vue-flow ref="vueFlowRef" :nodes="nodes" :edges="edges" :fit-view="false" :zoom-on-scroll="true"
+      :pan-on-drag="true" @nodes-change="onNodesChange" class="vue-flow"> -->
       <!-- <NodeResizer min-width="172" min-height="36" /> -->
       <Background />
       <MiniMap />
@@ -52,6 +54,7 @@ import dagre from 'dagre'
 
 // Array to store chart titles and JSON file paths
 const flowcharts = [
+  { title: 'TPT in PLHIV', path: '/flowcharts/TPT_in_PLHIV.json' },
   { title: 'Flowchart 1', path: '/flowcharts/flowchart1.json' },
   { title: 'Flowchart 2', path: '/flowcharts/flowchart2.json' },
   // Add more flowcharts as needed
@@ -115,7 +118,7 @@ async function loadFlowchart() {
     nextTick(() => {
       vueFlowRef.value.fitView({
         duration: 1000,
-        padding: 0.2,
+        padding: 1,
       })
     })
 
@@ -134,15 +137,15 @@ onMounted(() => {
   loadFlowchart()
 })
 
-function onNodesChange() {
-  // Wait for DOM updates
-  nextTick(() => {
-    vueFlowRef.value.fitView({
-      duration: 1000,
-      padding: 0.2,
-    })
-  })
-}
+// function onNodesChange() {
+//   // Wait for DOM updates
+//   nextTick(() => {
+//     vueFlowRef.value.fitView({
+//       duration: 1000,
+//       padding: 0.2,
+//     })
+//   })
+// }
 
 </script>
 

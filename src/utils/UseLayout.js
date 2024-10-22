@@ -9,7 +9,7 @@ import { ref } from 'vue'
 export function useLayout(findNode) {
     const graph = ref(new dagre.graphlib.Graph())
 
-    function layout(nodes, edges, direction='TB') {
+    function layout(nodes, edges, direction = 'TB') {
         // we create a new graph instance, in case some nodes/edges were removed, otherwise dagre would act as if they were still there
         const dagreGraph = new dagre.graphlib.Graph()
 
@@ -18,7 +18,13 @@ export function useLayout(findNode) {
         dagreGraph.setDefaultEdgeLabel(() => ({}))
 
         const isHorizontal = direction === 'LR'
-        dagreGraph.setGraph({ rankdir: direction })
+        dagreGraph.setGraph({
+            rankdir: direction,
+            nodesep: 100, // Adjust as needed
+            ranksep: 100, // Adjust as needed
+            marginx: 20,
+            marginy: 20,
+        })
 
         for (const node of nodes) {
             // if you need width+height of nodes for your layout, you can use the dimensions property of the internal node (`GraphNode` type)
@@ -41,7 +47,10 @@ export function useLayout(findNode) {
                 ...node,
                 targetPosition: isHorizontal ? Position.Left : Position.Top,
                 sourcePosition: isHorizontal ? Position.Right : Position.Bottom,
-                position: { x: nodeWithPosition.x, y: nodeWithPosition.y },
+                position: {
+                    x: nodeWithPosition.x - nodeWithPosition.width / 2,
+                    y: nodeWithPosition.y - nodeWithPosition.height / 2,
+                },
             }
         })
     }

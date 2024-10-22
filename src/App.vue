@@ -73,9 +73,15 @@ async function loadFlowchart() {
 
     // Wait for nodes to be rendered so that findNode can find them
     await nextTick()
+    await nextTick()
 
-    const { layout } = useLayout(vueFlowRef.value.findNode)
-    nodes.value = layout(nodes.value, edges.value, "TB")
+    nextTick(() => {
+      // Add a slight delay to ensure nodes and edges are rendered
+      setTimeout(() => {
+        const { layout } = useLayout(vueFlowRef.value.findNode)
+        nodes.value = layout(nodes.value, edges.value, "TB")
+      }, 0)
+    })
 
     focusView()
 

@@ -1,17 +1,13 @@
 import dagre from '@dagrejs/dagre'
-import { Position, useVueFlow } from '@vue-flow/core'
+import { Position } from '@vue-flow/core'
 import { ref } from 'vue'
 
 /**
  * Composable to run the layout algorithm on the graph.
  * It uses the `dagre` library to calculate the layout of the nodes and edges.
  */
-export function useLayout() {
-    const { findNode } = useVueFlow()
-
+export function useLayout(findNode) {
     const graph = ref(new dagre.graphlib.Graph())
-
-    // const previousDirection = ref('TB')
 
     function layout(nodes, edges, direction='TB') {
         // we create a new graph instance, in case some nodes/edges were removed, otherwise dagre would act as if they were still there
@@ -27,8 +23,6 @@ export function useLayout() {
         for (const node of nodes) {
             // if you need width+height of nodes for your layout, you can use the dimensions property of the internal node (`GraphNode` type)
             const graphNode = findNode(node.id)
-
-            console.log(findNode({id: 1}))
 
             dagreGraph.setNode(node.id, { width: graphNode.dimensions.width || 150, height: graphNode.dimensions.height || 50 })
         }

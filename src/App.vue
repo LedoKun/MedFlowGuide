@@ -40,8 +40,7 @@ import { VueFlow } from '@vue-flow/core'
 import { Background } from '@vue-flow/background'
 import { MiniMap } from '@vue-flow/minimap'
 import { Controls } from '@vue-flow/controls'
-
-// import { useLayout } from './utils/UseLayout.js'
+import { useLayout } from './utils/UseLayout.js'
 
 import '@vue-flow/minimap/dist/style.css'
 import '@vue-flow/controls/dist/style.css'
@@ -59,7 +58,6 @@ const selectedFlowchart = ref(flowcharts[0])
 
 // Reference to Vue Flow instance
 const vueFlowRef = ref(null)
-// const { updateNode } = useVueFlow()
 
 // Nodes and edges
 const nodes = ref([])
@@ -72,8 +70,12 @@ async function loadFlowchart() {
     const data = await response.json()
     nodes.value = data.nodes
     edges.value = data.edges
-    // const { layout } = useLayout()
-    // nodes.value = layout(nodes.value, edges.value, "TB")
+
+    // Wait for nodes to be rendered so that findNode can find them
+    await nextTick()
+
+    const { layout } = useLayout(vueFlowRef.value.findNode)
+    nodes.value = layout(nodes.value, edges.value, "TB")
 
     focusView()
 
@@ -96,6 +98,7 @@ function focusView() {
     }, 0) // You can adjust the delay as needed
   })
 }
+
 // Function to reset the flowchart
 function resetFlowchart() {
   loadFlowchart()

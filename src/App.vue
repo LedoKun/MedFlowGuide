@@ -1,24 +1,11 @@
 <!-- App.vue -->
 <template>
-  <div id="app">
-    <vue-flow ref="vueFlowRef" :nodes="nodes" :edges="edges" :fit-view="false" :zoom-on-scroll="true"
-      :pan-on-drag="true" class="vue-flow">
-      <!-- <vue-flow ref="vueFlowRef" :nodes="nodes" :edges="edges" :fit-view="false" :zoom-on-scroll="true"
-      :pan-on-drag="true" @nodes-change="onNodesChange" class="vue-flow"> -->
-      <!-- <NodeResizer min-width="172" min-height="36" /> -->
-      <Background />
-      <MiniMap />
-      <Controls />
-    </vue-flow>
-  </div>
-
-  <!-- Navbar at the bottom -->
   <nav class="navbar is-fixed-top has-background">
     <div class="navbar-menu is-active">
       <div class="navbar-start">
         <!-- Navigation between flowcharts -->
         <div class="navbar-item">
-          <div class="select">
+          <div class="select is-rounded is-halfwidth">
             <select v-model="selectedFlowchart" @change="loadFlowchart">
               <option v-for="(flowchart, index) in flowcharts" :key="index" :value="flowchart">
                 {{ flowchart.title }}
@@ -37,6 +24,14 @@
       </div>
     </div>
   </nav>
+  <div id="flow" class="container is-fullheight is-fluid">
+    <vue-flow ref="vueFlowRef" :nodes="nodes" :edges="edges" :fit-view="false" :zoom-on-scroll="true"
+      :pan-on-drag="true" class="vue-flow">
+      <Background />
+      <MiniMap />
+      <Controls />
+    </vue-flow>
+  </div>
 </template>
 
 <script setup>
@@ -46,11 +41,10 @@ import { Background } from '@vue-flow/background'
 import { MiniMap } from '@vue-flow/minimap'
 import { Controls } from '@vue-flow/controls'
 
+// import { useLayout } from './utils/UseLayout.js'
+
 import '@vue-flow/minimap/dist/style.css'
 import '@vue-flow/controls/dist/style.css'
-
-// Import dagre for layout
-import dagre from 'dagre'
 
 // Array to store chart titles and JSON file paths
 const flowcharts = [
@@ -65,43 +59,11 @@ const selectedFlowchart = ref(flowcharts[0])
 
 // Reference to Vue Flow instance
 const vueFlowRef = ref(null)
+// const { updateNode } = useVueFlow()
 
 // Nodes and edges
 const nodes = ref([])
 const edges = ref([])
-
-// Function to apply the dagre layout
-function applyDagreLayout(nodes, edges, direction = 'TB') {
-  const dagreGraph = new dagre.graphlib.Graph()
-  dagreGraph.setDefaultEdgeLabel(() => ({}))
-  dagreGraph.setGraph({ rankdir: direction })
-
-  // Set the nodes with their dimensions
-  nodes.forEach((node) => {
-    dagreGraph.setNode(node.id, {
-      width: node.width || 172,
-      height: node.height || 36,
-    })
-  })
-
-  edges.forEach((edge) => {
-    dagreGraph.setEdge(edge.source, edge.target)
-  })
-
-  dagre.layout(dagreGraph)
-
-  // Update node positions based on dagre calculations
-  nodes.forEach((node) => {
-    const nodeWithPosition = dagreGraph.node(node.id)
-
-    node.position = {
-      x: nodeWithPosition.x - (node.width || 172) / 2,
-      y: nodeWithPosition.y - (node.height || 36) / 2,
-    }
-  })
-
-  return nodes
-}
 
 // Function to load flowchart data from JSON file
 async function loadFlowchart() {
@@ -111,14 +73,18 @@ async function loadFlowchart() {
     nodes.value = data.nodes
     edges.value = data.edges
 
-    // Apply the layout
-    nodes.value = applyDagreLayout(nodes.value, edges.value)
+    // const { layout } = useLayout()
+    // nodes.value = layout(nodes.value, edges.value, "TB")
 
-    // Center the layout
+    nextTick(() => {
+      nodes.value.map((node) => {
+        vueFlowRef.value.updateNode(node.id, { data: node.data, type: node.type })
+      })
+    })
+
     nextTick(() => {
       vueFlowRef.value.fitView({
-        duration: 1000,
-        padding: 1,
+        duration: 2000, // use this if you want a smooth transition to the node
       })
     })
 
@@ -136,24 +102,14 @@ function resetFlowchart() {
 onMounted(() => {
   loadFlowchart()
 })
-
-// function onNodesChange() {
-//   // Wait for DOM updates
-//   nextTick(() => {
-//     vueFlowRef.value.fitView({
-//       duration: 1000,
-//       padding: 0.2,
-//     })
-//   })
-// }
-
 </script>
 
 <style>
 /* Ensure the app takes up the full page */
 html,
 body,
-#app {
+#app,
+#flow {
   height: 100%;
   margin: 0;
   padding: 0;

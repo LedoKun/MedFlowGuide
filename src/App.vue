@@ -76,7 +76,7 @@ async function loadFlowchart() {
       setTimeout(() => {
         const { layout } = useLayout(vueFlowRef.value.findNode)
         nodes.value = layout(nodes.value, edges.value, "TB")
-      }, 5)
+      }, 1)
     })
 
     focusView()
@@ -97,7 +97,7 @@ function focusView() {
           duration: 2000, // Smooth transition to fit the view
         })
       }
-    }, 5)
+    }, 1)
   })
 }
 

@@ -26,7 +26,7 @@
   </nav>
   <div id="flow" class="container is-fullheight is-fluid">
     <vue-flow ref="vueFlowRef" :nodes="nodes" :edges="edges" :fit-view="false" :zoom-on-scroll="true"
-      :pan-on-drag="true" class="vue-flow">
+      :fit-view-on-init="true" :pan-on-drag="true" class="vue-flow">
       <Background />
       <MiniMap />
       <Controls />
@@ -72,27 +72,30 @@ async function loadFlowchart() {
     const data = await response.json()
     nodes.value = data.nodes
     edges.value = data.edges
-
     // const { layout } = useLayout()
     // nodes.value = layout(nodes.value, edges.value, "TB")
 
-    nextTick(() => {
-      nodes.value.map((node) => {
-        vueFlowRef.value.updateNode(node.id, { data: node.data, type: node.type })
-      })
-    })
-
-    nextTick(() => {
-      vueFlowRef.value.fitView({
-        duration: 2000, // use this if you want a smooth transition to the node
-      })
-    })
+    focusView()
 
   } catch (error) {
     console.error('Error loading flowchart:', error)
   }
 }
 
+// Function to focusView
+function focusView() {
+  // Wait for the next DOM update cycle
+  nextTick(() => {
+    // Add a slight delay to ensure nodes and edges are rendered
+    setTimeout(() => {
+      if (vueFlowRef.value) {
+        vueFlowRef.value.fitView({
+          duration: 2000, // Smooth transition to fit the view
+        })
+      }
+    }, 0) // You can adjust the delay as needed
+  })
+}
 // Function to reset the flowchart
 function resetFlowchart() {
   loadFlowchart()

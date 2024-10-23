@@ -28,7 +28,7 @@
     <vue-flow ref="vueFlowRef" :nodes="nodes" :edges="edges" :fit-view="false" :zoom-on-scroll="true"
       :fit-view-on-init="true" :pan-on-drag="true" class="vue-flow">
       <Background />
-      <MiniMap />
+      <MiniMap pannable zoomable />
       <Controls />
     </vue-flow>
   </div>
@@ -95,7 +95,7 @@ async function loadFlowchart() {
         }
       }
     ]
-    
+
     edges.value = []
 
     focusView()
@@ -156,81 +156,33 @@ body,
   /* Ensure it stays above other elements */
 }
 
-/* Default Node (with in & out) */
-.vue-flow__node-default {
-  background: #7e57c2;
-  /* Brighter shade of purple */
-  color: #ffffff;
-  border: 1px solid #9575cd;
-  /* Even lighter purple for border */
-  border-radius: 6px;
-  /* Slightly more rounded corners */
-  box-shadow: 0 0 10px 3px rgba(149, 117, 205, 0.8);
-  /* Stronger glowing effect */
-  padding: 10px;
-  transition: background 0.3s, box-shadow 0.3s;
-}
-
-.vue-flow__node-default:hover {
-  background: #9575cd;
-  /* Brighter on hover */
-  box-shadow: 0 0 15px 5px rgba(149, 117, 205, 1);
-  /* Stronger glow on hover */
-}
-
-/* Input Node */
-.vue-flow__node-input {
-  background: #42a5f5;
-  /* Brighter blue */
-  color: #ffffff;
-  border: 1px solid #64b5f6;
-  /* Lighter blue for border */
-  border-radius: 6px;
-  box-shadow: 0 0 10px 3px rgba(100, 181, 246, 0.8);
-  /* Stronger blue glow */
-  padding: 10px;
-  transition: background 0.3s, box-shadow 0.3s;
-}
-
-.vue-flow__node-input:hover {
-  background: #64b5f6;
-  /* Brighter blue on hover */
-  box-shadow: 0 0 15px 5px rgba(100, 181, 246, 1);
-  /* Stronger glow on hover */
-}
-
-/* Output Node */
-.vue-flow__node-output {
-  background: #66bb6a;
-  /* Brighter green */
-  color: #ffffff;
-  border: 1px solid #81c784;
-  /* Lighter green for border */
-  border-radius: 6px;
-  box-shadow: 0 0 10px 3px rgba(129, 199, 132, 0.8);
-  /* Stronger green glow */
-  padding: 10px;
-  transition: background 0.3s, box-shadow 0.3s;
-}
-
+/* Hover Effects for Nodes */
+.vue-flow__node-default:hover,
+.vue-flow__node-input:hover,
 .vue-flow__node-output:hover {
-  background: #81c784;
-  /* Brighter green on hover */
-  box-shadow: 0 0 15px 5px rgba(129, 199, 132, 1);
-  /* Stronger glow on hover */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  /* Increased elevation */
 }
 
+/* Edge Styles */
 .vue-flow__edge {
-  stroke: #ffffff;
-  /* White edges to stand out on dark background */
-  stroke-width: 2px;
+  stroke: #FFFFFF;
+  /* White edges for contrast */
+  stroke-width: 4px;
 }
 
 .vue-flow__node-default,
 .vue-flow__node-input,
 .vue-flow__node-output {
-  font-family: "Sarabun", serif;
-  font-size: 14px;
-  font-style: normal;
+  background: purple !important;
+  color: white !important;
+  border: 1px solid purple !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 0 1px purple !important;
+  padding: 8px !important;
+  font-family: "Sarabun", serif !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  text-align: left !important;
 }
 </style>

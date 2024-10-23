@@ -35,99 +35,101 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
-import { VueFlow } from '@vue-flow/core'
-import { Background } from '@vue-flow/background'
-import { MiniMap } from '@vue-flow/minimap'
-import { Controls } from '@vue-flow/controls'
-import { useLayout } from './utils/UseLayout.js'
+import { ref, onMounted, nextTick } from 'vue';
+import { VueFlow } from '@vue-flow/core';
+import { Background } from '@vue-flow/background';
+import { MiniMap } from '@vue-flow/minimap';
+import { Controls } from '@vue-flow/controls';
+import { useLayout } from './utils/UseLayout.js';
 
-import '@vue-flow/minimap/dist/style.css'
-import '@vue-flow/controls/dist/style.css'
+import '@vue-flow/minimap/dist/style.css';
+import '@vue-flow/controls/dist/style.css';
 
-// Array to store chart titles and JSON file paths
+// Array to store flowchart titles and JSON file paths
 const flowcharts = [
-  { title: 'HIV Patient Latent Tuberculosis Infection Screening and Treatment', path: '/flowcharts/HIV_LTBI.json' },
+  {
+    title: 'HIV Patient Latent Tuberculosis Infection Screening and Treatment',
+    path: '/flowcharts/HIV_LTBI.json',
+  },
   { title: 'Flowchart 1', path: '/flowcharts/flowchart1x.json' },
   { title: 'Flowchart 2', path: '/flowcharts/flowchart2.json' },
   // Add more flowcharts as needed
-]
+];
 
-// Selected flowchart
-const selectedFlowchart = ref(flowcharts[0])
+// Selected flowchart (initially the first one)
+const selectedFlowchart = ref(flowcharts[0]);
 
 // Reference to Vue Flow instance
-const vueFlowRef = ref(null)
+const vueFlowRef = ref(null);
 
-// Nodes and edges
-const nodes = ref([])
-const edges = ref([])
+// Reactive nodes and edges arrays
+const nodes = ref([]);
+const edges = ref([]);
 
-// Function to load flowchart data from JSON file
+// Function to load flowchart data from the selected JSON file
 async function loadFlowchart() {
   try {
-    const response = await fetch(selectedFlowchart.value.path)
-    const data = await response.json()
-    nodes.value = data.nodes
-    edges.value = data.edges
+    const response = await fetch(selectedFlowchart.value.path);
+    const data = await response.json();
+    nodes.value = data.nodes;
+    edges.value = data.edges;
 
     await nextTick(() => {
       // Add a slight delay to ensure nodes and edges are rendered
       setTimeout(() => {
-        const { layout } = useLayout(vueFlowRef.value.findNode)
-        nodes.value = layout(nodes.value, edges.value, "LR")
-      }, 1)
-    })
+        const { layout } = useLayout(vueFlowRef.value.findNode);
+        nodes.value = layout(nodes.value, edges.value, 'LR');
+      }, 1);
+    });
 
-    focusView()
-
+    focusView();
   } catch (error) {
+    // If there's an error loading the flowchart, display a fallback node
     nodes.value = [
       {
-        "id": "1",
-        "type": "output",
-        "data": {
-          "label": "Cannot load flowchart!"
+        id: '1',
+        type: 'output',
+        data: {
+          label: 'Cannot load flowchart!',
         },
-        "position": {
-          "x": 0,
-          "y": 0
-        }
-      }
-    ]
+        position: {
+          x: 0,
+          y: 0,
+        },
+      },
+    ];
 
-    edges.value = []
+    edges.value = [];
 
-    focusView()
+    focusView();
 
-    console.error('Error loading flowchart:', error)
+    console.error('Error loading flowchart:', error);
   }
 }
 
-// Function to focusView
+// Function to focus the view on the flowchart
 function focusView() {
-  // Wait for the next DOM update cycle
   nextTick(() => {
     // Add a slight delay to ensure nodes and edges are rendered
     setTimeout(() => {
       if (vueFlowRef.value) {
         vueFlowRef.value.fitView({
           duration: 2000, // Smooth transition to fit the view
-        })
+        });
       }
-    }, 1)
-  })
+    }, 1);
+  });
 }
 
-// Function to reset the flowchart
+// Function to reset the flowchart to its initial state
 function resetFlowchart() {
-  loadFlowchart()
+  loadFlowchart();
 }
 
-// Apply the layout after the component is mounted
+// Load the initial flowchart when the component is mounted
 onMounted(() => {
-  loadFlowchart()
-})
+  loadFlowchart();
+});
 </script>
 
 <style>
@@ -166,7 +168,7 @@ body,
 
 /* Edge Styles */
 .vue-flow__edge {
-  stroke: #FFFFFF;
+  stroke: #ffffff;
   /* White edges for contrast */
   stroke-width: 4px;
 }
@@ -180,7 +182,7 @@ body,
   border-radius: 4px !important;
   box-shadow: 0 0 0 1px purple !important;
   padding: 8px !important;
-  font-family: "Sarabun", serif !important;
+  font-family: 'Sarabun', serif !important;
   font-weight: 600 !important;
   font-style: normal !important;
   text-align: left !important;

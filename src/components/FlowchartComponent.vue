@@ -1,4 +1,4 @@
-<!-- components/FlowChartComponent.vue -->
+<!-- components/FlowchartComponent.vue -->
 <template>
     <div id="flow" class="container is-fullheight is-fluid">
         <vue-flow ref="vueFlowRef" :nodes="nodes" :edges="edges" :fit-view="false" :zoom-on-scroll="true"

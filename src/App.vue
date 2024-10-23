@@ -8,7 +8,7 @@
 <script setup>
 import { ref } from 'vue';
 import NavbarComponent from './components/NavbarComponent.vue';
-import FlowChartComponent from './components/FlowChartComponent.vue';
+import FlowChartComponent from './components/FlowchartComponent.vue';
 
 // Flowcharts array
 const flowcharts = [

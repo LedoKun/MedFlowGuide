@@ -1,36 +1,29 @@
-[
-    {
-        "id": "1",
-        "type": "customNode",
-        "data": {
-            "label": "Introduction to Vue.js",
-            "paragraphs": [
-                "Vue.js is a progressive JavaScript framework.",
-                "It is used for building user interfaces.",
-                "Vue is easy to integrate into projects."
-            ],
-            "media": {
-                "type": "image",
-                "src": "https://via.placeholder.com/150"
-            }
+{
+    "nodes": [
+        {
+            "id": "1",
+            "label": "Start",
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "data": {}
         },
-        "position": {}
-    },
-    {
-        "id": "2",
-        "type": "customNode",
-        "data": {
-            "label": "Vue 3 Documentation",
-            "paragraphs": [
-                "Explore the official Vue 3 documentation.",
-                "Learn about Composition API and new features.",
-                "Find examples and community resources."
-            ],
-            "media": {
-                "type": "youtube",
-                "src": "ZpM-p2D8V1w"
-            }
-        },
-        "position": {}
-    }
-]
+        {
+            "id": "2",
+            "label": "Process",
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "data": {}
+        }
+    ],
+    "edges": [
+        {
+            "id": "e1-2",
+            "source": "1",
+            "target": "2"
+        }
+    ]
+}

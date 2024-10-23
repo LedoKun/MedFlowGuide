@@ -6,28 +6,40 @@
             "data": {
                 "label": "ผู้ติดเชื้อเอชไอวี"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "2",
             "data": {
                 "label": "คัดกรองอาการของวัณโรค ตรวจร่างกาย ภาพรังสีทรวงอก"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "3",
             "data": {
                 "label": "ผิดปกติ เข้าได้กับวัณโรค"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "4",
             "data": {
                 "label": "ปกติ / ไม่เข้ากับวัณโรค"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "5",
@@ -35,28 +47,40 @@
             "data": {
                 "label": "รักษาวัณโรค"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "6",
             "data": {
                 "label": "ประวัติสัมผัสวัณโรค"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "7",
             "data": {
                 "label": "ไม่มี"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "8",
             "data": {
                 "label": "มี"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "9",
@@ -64,70 +88,100 @@
             "data": {
                 "label": "ให้ TPT**"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "10",
             "data": {
                 "label": "ผู้ติดเชื้อเอชไอวี รายใหม่ รับยาต้านไวรัสมา ≤ 12 เดือน"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "11",
             "data": {
                 "label": "ผู้ติดเชื้อเอชไอวี ที่ได้รับยาต้านไวรัสมานาน > 12 เดือน"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "12",
             "data": {
                 "label": "CD4*"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "13",
             "data": {
                 "label": "CD4 < 200 cells/mm³* หรือ รักษาเอชไอวีไม่ได้ผล กดปริมาณไวรัสเอชไอวีไม่สำเร็จ HIV VL > 1,000 copies/ml หรือ ขาดยาต้านหรือไม่ได้รับยากดต้านไวรัสต่อเนื่อง > 90 วัน หรือ โรคไตเรื้อรังที่ได้รับการบำบัดทดแทนไต"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "14",
             "data": {
                 "label": "CD4 ≥ 200 cells/mm³*"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "15",
             "data": {
                 "label": "ทดสอบ IGRAs (หรือ skin test)"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "16",
             "data": {
                 "label": "ไม่ทดสอบ IGRAs (หรือ skin test)"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "17",
             "data": {
                 "label": "IGRAs บวก หรือ TST ≥ 5 มม. หรือ skin test อื่น ๆ ให้ผลบวก***"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "18",
             "data": {
                 "label": "IGRAs ลบ หรือ TST < 5 มม. หรือ skin test อื่น ๆ ให้ผลลบ***"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "20",
@@ -135,7 +189,10 @@
             "data": {
                 "label": "เฝ้าระวังและติดตาม"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         },
         {
             "id": "21",
@@ -143,7 +200,10 @@
             "data": {
                 "label": "ให้ TPT ขึ้นอยู่กับดุลยพินิจของแพทย์"
             },
-            "position": {}
+            "position": {
+                "x": 0,
+                "y": 0
+            }
         }
     ],
     "edges": [

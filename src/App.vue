@@ -47,8 +47,8 @@ import '@vue-flow/controls/dist/style.css'
 
 // Array to store chart titles and JSON file paths
 const flowcharts = [
-  { title: 'TPT in PLHIV', path: '/flowcharts/TPT_in_PLHIV.json' },
-  { title: 'Flowchart 1', path: '/flowcharts/flowchart1.json' },
+  { title: 'HIV Patient Latent Tuberculosis Infection Screening and Treatment', path: '/flowcharts/HIV_LTBI.json' },
+  { title: 'Flowchart 1', path: '/flowcharts/flowchart1x.json' },
   { title: 'Flowchart 2', path: '/flowcharts/flowchart2.json' },
   // Add more flowcharts as needed
 ]
@@ -75,13 +75,31 @@ async function loadFlowchart() {
       // Add a slight delay to ensure nodes and edges are rendered
       setTimeout(() => {
         const { layout } = useLayout(vueFlowRef.value.findNode)
-        nodes.value = layout(nodes.value, edges.value, "TB")
+        nodes.value = layout(nodes.value, edges.value, "LR")
       }, 1)
     })
 
     focusView()
 
   } catch (error) {
+    nodes.value = [
+      {
+        "id": "1",
+        "type": "output",
+        "data": {
+          "label": "Cannot load flowchart!"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ]
+    
+    edges.value = []
+
+    focusView()
+
     console.error('Error loading flowchart:', error)
   }
 }
@@ -136,5 +154,83 @@ body,
   width: 100%;
   z-index: 1000;
   /* Ensure it stays above other elements */
+}
+
+/* Default Node (with in & out) */
+.vue-flow__node-default {
+  background: #7e57c2;
+  /* Brighter shade of purple */
+  color: #ffffff;
+  border: 1px solid #9575cd;
+  /* Even lighter purple for border */
+  border-radius: 6px;
+  /* Slightly more rounded corners */
+  box-shadow: 0 0 10px 3px rgba(149, 117, 205, 0.8);
+  /* Stronger glowing effect */
+  padding: 10px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.vue-flow__node-default:hover {
+  background: #9575cd;
+  /* Brighter on hover */
+  box-shadow: 0 0 15px 5px rgba(149, 117, 205, 1);
+  /* Stronger glow on hover */
+}
+
+/* Input Node */
+.vue-flow__node-input {
+  background: #42a5f5;
+  /* Brighter blue */
+  color: #ffffff;
+  border: 1px solid #64b5f6;
+  /* Lighter blue for border */
+  border-radius: 6px;
+  box-shadow: 0 0 10px 3px rgba(100, 181, 246, 0.8);
+  /* Stronger blue glow */
+  padding: 10px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.vue-flow__node-input:hover {
+  background: #64b5f6;
+  /* Brighter blue on hover */
+  box-shadow: 0 0 15px 5px rgba(100, 181, 246, 1);
+  /* Stronger glow on hover */
+}
+
+/* Output Node */
+.vue-flow__node-output {
+  background: #66bb6a;
+  /* Brighter green */
+  color: #ffffff;
+  border: 1px solid #81c784;
+  /* Lighter green for border */
+  border-radius: 6px;
+  box-shadow: 0 0 10px 3px rgba(129, 199, 132, 0.8);
+  /* Stronger green glow */
+  padding: 10px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.vue-flow__node-output:hover {
+  background: #81c784;
+  /* Brighter green on hover */
+  box-shadow: 0 0 15px 5px rgba(129, 199, 132, 1);
+  /* Stronger glow on hover */
+}
+
+.vue-flow__edge {
+  stroke: #ffffff;
+  /* White edges to stand out on dark background */
+  stroke-width: 2px;
+}
+
+.vue-flow__node-default,
+.vue-flow__node-input,
+.vue-flow__node-output {
+  font-family: "Sarabun", serif;
+  font-size: 14px;
+  font-style: normal;
 }
 </style>

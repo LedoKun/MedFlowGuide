@@ -21,9 +21,9 @@ export function useLayout(findNode) {
         dagreGraph.setGraph({
             rankdir: direction,
             nodesep: 100, // Adjust as needed
-            ranksep: 100, // Adjust as needed
-            marginx: 20,
-            marginy: 20,
+            ranksep:80, // Adjust as needed
+            marginx: 30,
+            marginy: 30,
         })
 
         for (const node of nodes) {

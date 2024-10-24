@@ -19,10 +19,10 @@ export function useLayout(findNode) {
         const isHorizontal = direction === 'LR';
         dagreGraph.setGraph({
             rankdir: direction,
-            nodesep: 100, // Adjust as needed
-            ranksep: 100, // Adjust as needed
-            marginx: 20,
-            marginy: 20,
+            nodesep: 80, // Adjust as needed
+            ranksep: 80, // Adjust as needed
+            marginx: 60,
+            marginy: 40,
         });
 
         for (const node of nodes) {

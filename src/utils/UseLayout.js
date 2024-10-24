@@ -48,6 +48,11 @@ export function useLayout(findNode) {
 
             return {
                 ...node,
+                data: {
+                    ...node.data,
+                    targetPosition: isHorizontal ? Position.Left : Position.Top,
+                    sourcePosition: isHorizontal ? Position.Right : Position.Bottom,
+                },
                 targetPosition: isHorizontal ? Position.Left : Position.Top,
                 sourcePosition: isHorizontal ? Position.Right : Position.Bottom,
                 position: {

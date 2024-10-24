@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { ref, watch, nextTick } from 'vue';
+import { ref, watch, nextTick, markRaw } from 'vue';
 import { VueFlow } from '@vue-flow/core';
 import { Background } from '@vue-flow/background';
 import { MiniMap } from '@vue-flow/minimap';
@@ -23,7 +23,7 @@ import RichNode from "@/components/RichNodeComponent.vue"; // Import your custom
 import '@vue-flow/minimap/dist/style.css';
 import '@vue-flow/controls/dist/style.css';
 
-const nodeTypes = { richNode: RichNode }; // Register custom node
+const nodeTypes = { richNode: markRaw(RichNode) }; // Register custom node
 
 // Define props
 const props = defineProps({

@@ -11,12 +11,28 @@
         },
         {
             "id": "2",
-            "label": "Process",
+            "type": "richNode",
+            "data": {
+                "label": "My Custom Node",
+                "paragraphs": [
+                    "This is the first paragraph.",
+                    "Here's another paragraph."
+                ],
+                "media": [
+                    {
+                        "type": "image",
+                        "src": "https://i0.wp.com/blog.pensoft.net/wp-content/uploads/2018/03/DSCN1337-1.jpg?w=1680"
+                    },
+                    {
+                        "type": "youtube",
+                        "src": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    }
+                ]
+            },
             "position": {
                 "x": 0,
                 "y": 0
-            },
-            "data": {}
+            }
         }
     ],
     "edges": [

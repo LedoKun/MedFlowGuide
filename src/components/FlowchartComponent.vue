@@ -2,7 +2,7 @@
 <template>
     <div id="flow" class="container is-fullheight is-fluid">
         <vue-flow ref="vueFlowRef" :nodes="nodes" :edges="edges" :fit-view="false" :zoom-on-scroll="true"
-            :fit-view-on-init="true" :pan-on-drag="true" class="vue-flow">
+            :fit-view-on-init="true" :pan-on-drag="true" :node-types="nodeTypes" class="vue-flow">
             <Background />
             <MiniMap pannable zoomable />
             <Controls />
@@ -18,8 +18,12 @@ import { MiniMap } from '@vue-flow/minimap';
 import { Controls } from '@vue-flow/controls';
 import { useLayout } from '../utils/UseLayout.js';
 
+import RichNode from "@/components/RichNodeComponent.vue"; // Import your custom node
+
 import '@vue-flow/minimap/dist/style.css';
 import '@vue-flow/controls/dist/style.css';
+
+const nodeTypes = { richNode: RichNode }; // Register custom node
 
 // Define props
 const props = defineProps({

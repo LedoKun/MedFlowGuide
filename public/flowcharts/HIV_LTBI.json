@@ -2,9 +2,10 @@
     "nodes": [
         {
             "id": "1",
-            "type": "input",
+            "type": "richNode",
             "data": {
-                "label": "ผู้ติดเชื้อเอชไอวี"
+                "label": "ผู้ติดเชื้อเอชไอวี",
+                "nodeType": "input"
             },
             "position": {
                 "x": 0,
@@ -13,8 +14,10 @@
         },
         {
             "id": "2",
+            "type": "richNode",
             "data": {
-                "label": "คัดกรองอาการของวัณโรค ตรวจร่างกาย ภาพรังสีทรวงอก"
+                "label": "คัดกรองอาการของวัณโรค ตรวจร่างกาย ภาพรังสีทรวงอก",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -23,8 +26,10 @@
         },
         {
             "id": "3",
+            "type": "richNode",
             "data": {
-                "label": "ผิดปกติ เข้าได้กับวัณโรค"
+                "label": "ผิดปกติ เข้าได้กับวัณโรค",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -33,8 +38,10 @@
         },
         {
             "id": "4",
+            "type": "richNode",
             "data": {
-                "label": "ปกติ / ไม่เข้ากับวัณโรค"
+                "label": "ปกติ / ไม่เข้ากับวัณโรค",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -43,9 +50,10 @@
         },
         {
             "id": "5",
-            "type": "output",
+            "type": "richNode",
             "data": {
-                "label": "รักษาวัณโรค"
+                "label": "รักษาวัณโรค",
+                "nodeType": "output"
             },
             "position": {
                 "x": 0,
@@ -54,8 +62,10 @@
         },
         {
             "id": "6",
+            "type": "richNode",
             "data": {
-                "label": "ประวัติสัมผัสวัณโรค"
+                "label": "ประวัติสัมผัสวัณโรค",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -64,8 +74,10 @@
         },
         {
             "id": "7",
+            "type": "richNode",
             "data": {
-                "label": "ไม่มี"
+                "label": "ไม่มี",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -74,8 +86,10 @@
         },
         {
             "id": "8",
+            "type": "richNode",
             "data": {
-                "label": "มี"
+                "label": "มี",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -84,9 +98,11 @@
         },
         {
             "id": "9",
-            "type": "output",
+            "type": "richNode",
             "data": {
-                "label": "ให้ TPT**"
+                "label": "ให้ TPT",
+                "paragraphs": ["เริ่มให้ TPT หลังจากทน ARV และ co-trimoxazole ได้", "หญิงตั้งครรภ์เริ่มยาหลัง 1st trimester (เนื่องจากควรทำภาพถ่ายรังสีทรวงอกเพื่อแยกภาวะติดเชื้อวัณโรคก่อน)"],
+                "nodeType": "output"
             },
             "position": {
                 "x": 0,
@@ -95,8 +111,10 @@
         },
         {
             "id": "10",
+            "type": "richNode",
             "data": {
-                "label": "ผู้ติดเชื้อเอชไอวี รายใหม่ รับยาต้านไวรัสมา ≤ 12 เดือน"
+                "label": "ผู้ติดเชื้อเอชไอวี รายใหม่ รับยาต้านไวรัสมา ≤ 12 เดือน",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -105,8 +123,10 @@
         },
         {
             "id": "11",
+            "type": "richNode",
             "data": {
-                "label": "ผู้ติดเชื้อเอชไอวี ที่ได้รับยาต้านไวรัสมานาน > 12 เดือน"
+                "label": "ผู้ติดเชื้อเอชไอวี ที่ได้รับยาต้านไวรัสมานาน > 12 เดือน",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -115,8 +135,10 @@
         },
         {
             "id": "12",
+            "type": "richNode",
             "data": {
-                "label": "CD4*"
+                "label": "CD4",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -125,8 +147,15 @@
         },
         {
             "id": "13",
+            "type": "richNode",
             "data": {
-                "label": "CD4 < 200 cells/mm³* หรือ รักษาเอชไอวีไม่ได้ผล กดปริมาณไวรัสเอชไอวีไม่สำเร็จ HIV VL > 1,000 copies/ml หรือ ขาดยาต้านหรือไม่ได้รับยากดต้านไวรัสต่อเนื่อง > 90 วัน หรือ โรคไตเรื้อรังที่ได้รับการบำบัดทดแทนไต"
+                "paragraphs": [
+                    "CD4 < 200 cells/mm³ (ในเด็กอายุ < 5 ปี ใช้เกณฑ์ CD4 < 15%) หรือ",
+                    "รักษาเอชไอวีไม่ได้ผล กดปริมาณไวรัสเอชไอวีไม่สำเร็จ HIV VL > 1,000 copies/ml หรือ",
+                    "ขาดยาต้านหรือไม่ได้รับยากดต้านไวรัสต่อเนื่อง > 90 วัน หรือ",
+                    "โรคไตเรื้อรังที่ได้รับการบำบัดทดแทนไต"
+                ],
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -135,8 +164,10 @@
         },
         {
             "id": "14",
+            "type": "richNode",
             "data": {
-                "label": "CD4 ≥ 200 cells/mm³*"
+                "label": "CD4 ≥ 200 cells/mm³ (ในเด็กอายุ < 5 ปี ใช้เกณฑ์ CD4 ≥ 15%)",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -145,8 +176,10 @@
         },
         {
             "id": "15",
+            "type": "richNode",
             "data": {
-                "label": "ทดสอบ IGRAs (หรือ skin test)"
+                "label": "ทดสอบ IGRAs (หรือ skin test)",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -155,8 +188,10 @@
         },
         {
             "id": "16",
+            "type": "richNode",
             "data": {
-                "label": "ไม่ทดสอบ IGRAs (หรือ skin test)"
+                "label": "ไม่ทดสอบ IGRAs (หรือ skin test)",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -165,8 +200,10 @@
         },
         {
             "id": "17",
+            "type": "richNode",
             "data": {
-                "label": "IGRAs บวก หรือ TST ≥ 5 มม. หรือ skin test อื่น ๆ ให้ผลบวก***"
+                "label": "IGRAs บวก หรือ TST ≥ 5 มม. หรือ skin test อื่น ๆ ให้ผลบวก",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -175,8 +212,10 @@
         },
         {
             "id": "18",
+            "type": "richNode",
             "data": {
-                "label": "IGRAs ลบ หรือ TST < 5 มม. หรือ skin test อื่น ๆ ให้ผลลบ***"
+                "label": "IGRAs ลบ หรือ TST < 5 มม. หรือ skin test อื่น ๆ ให้ผลลบ",
+                "nodeType": "default"
             },
             "position": {
                 "x": 0,
@@ -185,9 +224,10 @@
         },
         {
             "id": "20",
-            "type": "output",
+            "type": "richNode",
             "data": {
-                "label": "เฝ้าระวังและติดตาม"
+                "label": "เฝ้าระวังและติดตาม",
+                "nodeType": "output"
             },
             "position": {
                 "x": 0,
@@ -196,9 +236,10 @@
         },
         {
             "id": "21",
-            "type": "output",
+            "type": "richNode",
             "data": {
-                "label": "ให้ TPT ขึ้นอยู่กับดุลยพินิจของแพทย์"
+                "label": "ให้ TPT ขึ้นอยู่กับดุลยพินิจของแพทย์",
+                "nodeType": "output"
             },
             "position": {
                 "x": 0,

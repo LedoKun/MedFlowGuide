@@ -2,12 +2,14 @@
     "nodes": [
         {
             "id": "1",
-            "label": "Start",
+            "data": {
+                "label": "Start"
+            },
             "position": {
                 "x": 0,
                 "y": 0
             },
-            "data": {}
+            "nodeType": "input"
         },
         {
             "id": "2",
@@ -27,7 +29,8 @@
                         "type": "youtube",
                         "src": "https://www.youtube.com/embed/dQw4w9WgXcQ"
                     }
-                ]
+                ],
+                "nodeType": "output"
             },
             "position": {
                 "x": 0,

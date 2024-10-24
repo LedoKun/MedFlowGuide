@@ -2,10 +2,10 @@
     <div>
         <article class="message">
             <div class="rich-node container">
-                <div class="message-header is-medium">
-                    <p>{{ data.label }}</p>
-                </div>
                 <div class="message-body">
+                    <div class="is-medium">
+                        <p>{{ data.label }}</p>
+                    </div>
                     <ul>
                         <li v-for="(paragraph, index) in data.paragraphs" :key="index">{{ paragraph }}</li>
                     </ul>
@@ -20,7 +20,7 @@
         </article>
 
         <Handle v-if="sourcePosition" id="a" type="source" :position="sourcePosition" />
-        <Handle v-if="targetPosition" id="a" type="target" :position="targetPosition" />
+        <Handle v-if="targetPosition" id="b" type="target" :position="targetPosition" />
     </div>
 </template>
 
@@ -39,30 +39,10 @@ export default {
     },
     computed: {
         sourcePosition: function () {
-            return this.convertPosition(this.data.sourcePosition)
+            return (this.data.nodeType === "output" || this.data.nodeType === "default" || !this.data.nodeType) ? Position.Left : null
         },
         targetPosition: function () {
-            return this.convertPosition(this.data.targetPosition)
-        }
-    },
-    methods: {
-        convertPosition(positionString) {
-            switch (positionString) {
-                case "left":
-                    return Position.Left
-
-                case "right":
-                    return Position.Right
-
-                case "top":
-                    return Position.Top
-
-                case "bottom":
-                    return Position.Bottom
-
-                default:
-                    return null
-            }
+            return (this.data.nodeType === "input" || this.data.nodeType === "default" || !this.data.nodeType) ? Position.Right : null
         }
     }
 }

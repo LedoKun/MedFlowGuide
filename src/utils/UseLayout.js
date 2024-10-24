@@ -19,8 +19,8 @@ export function useLayout(findNode) {
         const isHorizontal = direction === 'LR';
         dagreGraph.setGraph({
             rankdir: direction,
-            nodesep: 60, // Adjust as needed
-            ranksep: 60, // Adjust as needed
+            nodesep: 100, // Adjust as needed
+            ranksep: 100, // Adjust as needed
             marginx: 20,
             marginy: 20,
         });
@@ -48,11 +48,6 @@ export function useLayout(findNode) {
 
             return {
                 ...node,
-                data: {
-                    ...node.data,
-                    targetPosition: isHorizontal ? Position.Left : Position.Top,
-                    sourcePosition: isHorizontal ? Position.Right : Position.Bottom,
-                },
                 targetPosition: isHorizontal ? Position.Left : Position.Top,
                 sourcePosition: isHorizontal ? Position.Right : Position.Bottom,
                 position: {

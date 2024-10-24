@@ -39,10 +39,10 @@ export default {
     },
     computed: {
         sourcePosition: function () {
-            return (this.data.nodeType === "output" || this.data.nodeType === "default" || !this.data.nodeType) ? Position.Left : null
+            return (this.data.nodeType !== "output" || this.data.nodeType === "default" || !this.data.nodeType) ? Position.Right : null
         },
         targetPosition: function () {
-            return (this.data.nodeType === "input" || this.data.nodeType === "default" || !this.data.nodeType) ? Position.Right : null
+            return (this.data.nodeType !== "input" || this.data.nodeType === "default" || !this.data.nodeType) ? Position.Left : null
         }
     }
 }

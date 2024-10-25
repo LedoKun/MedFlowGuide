@@ -56,7 +56,7 @@ async function loadFlowchart() {
         // Add a slight delay to ensure nodes and edges are rendered
         setTimeout(() => {
             const { layout } = useLayout(vueFlowRef.value.findNode);
-            nodes.value = layout(nodes.value, edges.value, 'LR');
+            nodes.value = layout(nodes.value, edges.value, 'TB');
         }, 1);
 
         focusView();
@@ -89,10 +89,11 @@ function focusView() {
         setTimeout(() => {
             if (vueFlowRef.value) {
                 vueFlowRef.value.fitView({
+                    nodes: ['1', '2', '3', '4'],
                     duration: 2000,
                 });
             }
-        }, 1);
+        }, 1500);
     });
 }
 

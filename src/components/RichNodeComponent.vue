@@ -36,10 +36,10 @@ export default {
     },
     computed: {
         sourcePosition: function () {
-            return (this.data.nodeType !== "output" || this.data.nodeType === "default" || !this.data.nodeType) ? Position.Right : null
+            return (this.data.nodeType !== "output" || this.data.nodeType === "default" || !this.data.nodeType) ? Position.Bottom : null
         },
         targetPosition: function () {
-            return (this.data.nodeType !== "input" || this.data.nodeType === "default" || !this.data.nodeType) ? Position.Left : null
+            return (this.data.nodeType !== "input" || this.data.nodeType === "default" || !this.data.nodeType) ? Position.Top : null
         }
     }
 }
@@ -50,11 +50,6 @@ export default {
     color: white !important;
     font-family: 'Sarabun', serif !important;
     text-align: left !important;
-}
-
-.media-container img {
-    width: auto;
-    height: 200px;
 }
 
 .media-container iframe {

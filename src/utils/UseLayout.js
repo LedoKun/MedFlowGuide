@@ -21,8 +21,8 @@ export function useLayout(findNode) {
             rankdir: direction,
             nodesep: 80, // Adjust as needed
             ranksep: 80, // Adjust as needed
-            marginx: 60,
-            marginy: 40,
+            marginx: 20,
+            marginy: 20,
         });
 
         for (const node of nodes) {

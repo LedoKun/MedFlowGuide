@@ -17,7 +17,13 @@
             "type": "richNode",
             "data": {
                 "label": "คัดกรองอาการของวัณโรค ตรวจร่างกาย ภาพรังสีทรวงอก",
-                "nodeType": "default"
+                "nodeType": "default",
+                "media": [
+                    {
+                        "type": "image",
+                        "src": "/flowcharts/CPG_TPT_PLHIV_v1_20241025/screening.png"
+                    }
+                ]
             },
             "position": {
                 "x": 0,
@@ -101,7 +107,16 @@
             "type": "richNode",
             "data": {
                 "label": "ให้ TPT",
-                "paragraphs": ["เริ่มให้ TPT หลังจากทน ARV และ co-trimoxazole ได้", "หญิงตั้งครรภ์เริ่มยาหลัง 1st trimester (เนื่องจากควรทำภาพถ่ายรังสีทรวงอกเพื่อแยกภาวะติดเชื้อวัณโรคก่อน)"],
+                "paragraphs": [
+                    "เริ่มให้ TPT หลังจากทน ARV และ co-trimoxazole ได้",
+                    "หญิงตั้งครรภ์เริ่มยาหลัง 1st trimester (เนื่องจากควรทำภาพถ่ายรังสีทรวงอกเพื่อแยกภาวะติดเชื้อวัณโรคก่อน)"
+                ],
+                "media": [
+                    {
+                        "type": "image",
+                        "src": "/flowcharts/CPG_TPT_PLHIV_v1_20241025/TPT_dose.png"
+                    }
+                ],
                 "nodeType": "output"
             },
             "position": {
@@ -250,111 +265,133 @@
     "edges": [
         {
             "id": "e1-2",
+            "type": "smoothstep",
             "source": "1",
             "target": "2"
         },
         {
             "id": "e2-3",
+            "type": "smoothstep",
             "source": "2",
             "target": "3"
         },
         {
             "id": "e2-4",
+            "type": "smoothstep",
             "source": "2",
             "target": "4"
         },
         {
             "id": "e3-5",
+            "type": "smoothstep",
             "source": "3",
             "target": "5"
         },
         {
             "id": "e4-6",
+            "type": "smoothstep",
             "source": "4",
             "target": "6"
         },
         {
             "id": "e6-7",
+            "type": "smoothstep",
             "source": "6",
             "target": "7"
         },
         {
             "id": "e6-8",
+            "type": "smoothstep",
             "source": "6",
             "target": "8"
         },
         {
             "id": "e8-9",
+            "type": "smoothstep",
             "source": "8",
             "target": "9"
         },
         {
             "id": "e7-10",
+            "type": "smoothstep",
             "source": "7",
             "target": "10"
         },
         {
             "id": "e10-9",
+            "type": "smoothstep",
             "source": "10",
             "target": "9"
         },
         {
             "id": "e7-11",
+            "type": "smoothstep",
             "source": "7",
             "target": "11"
         },
         {
             "id": "e11-12",
+            "type": "smoothstep",
             "source": "11",
             "target": "12"
         },
         {
             "id": "e12-13",
+            "type": "smoothstep",
             "source": "12",
             "target": "13"
         },
         {
             "id": "e13-9",
+            "type": "smoothstep",
             "source": "13",
             "target": "9"
         },
         {
             "id": "e12-14",
+            "type": "smoothstep",
             "source": "12",
             "target": "14"
         },
         {
             "id": "e14-15",
+            "type": "smoothstep",
             "source": "14",
             "target": "15"
         },
         {
             "id": "e14-16",
+            "type": "smoothstep",
             "source": "14",
             "target": "16"
         },
         {
             "id": "e16-21",
+            "type": "smoothstep",
             "source": "16",
             "target": "21"
         },
         {
             "id": "e15-17",
+            "type": "smoothstep",
             "source": "15",
             "target": "17"
         },
         {
             "id": "e15-18",
+            "type": "smoothstep",
             "source": "15",
             "target": "18"
         },
         {
             "id": "e17-9",
+            "type": "smoothstep",
             "source": "17",
             "target": "9"
         },
         {
             "id": "e18-20",
+            "type": "smoothstep",
             "source": "18",
             "target": "20"
         }

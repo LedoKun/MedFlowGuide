@@ -3,12 +3,12 @@
         <div class="rich-node container">
             <div class="message-body">
                 <!-- Display the label if it exists in the data -->
-                <div class="block is-size-5 label" v-if="data.label">
+                <div class="block is-size-3 label" v-if="data.label">
                     <p>{{ data.label }}</p>
                 </div>
 
                 <!-- Display each paragraph from data.paragraphs if available -->
-                <ul class="block is-size-5 paragraphs" v-if="data.paragraphs">
+                <ul class="block is-size-4 paragraphs" v-if="data.paragraphs">
                     <li v-for="(paragraph, index) in data.paragraphs" :key="index">{{ paragraph }}</li>
                 </ul>
 

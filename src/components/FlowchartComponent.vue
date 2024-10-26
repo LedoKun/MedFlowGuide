@@ -1,11 +1,13 @@
 <!-- components/FlowchartComponent.vue -->
+
 <template>
     <div id="flow" class="container is-fullheight is-fluid">
+        <!-- Vue Flow instance for displaying nodes and edges with controls -->
         <vue-flow ref="vueFlowRef" :nodes="nodes" :edges="edges" :fit-view="false" :zoom-on-scroll="true"
             :fit-view-on-init="true" :pan-on-drag="true" :node-types="nodeTypes" class="vue-flow">
-            <Background />
-            <MiniMap pannable zoomable />
-            <Controls />
+            <Background /> <!-- Grid background for layout context -->
+            <MiniMap pannable zoomable /> <!-- Minimap for easier navigation -->
+            <Controls /> <!-- Standard controls for zoom and pan -->
         </vue-flow>
     </div>
 </template>
@@ -18,14 +20,16 @@ import { MiniMap } from '@vue-flow/minimap';
 import { Controls } from '@vue-flow/controls';
 import { useLayout } from '../utils/UseLayout.js';
 
-import RichNode from "@/components/RichNodeComponent.vue"; // Import your custom node
+import RichNode from "@/components/RichNodeComponent.vue"; // Custom node component
 
+// Import styles for additional Vue Flow components
 import '@vue-flow/minimap/dist/style.css';
 import '@vue-flow/controls/dist/style.css';
 
-const nodeTypes = { richNode: markRaw(RichNode) }; // Register custom node
+// Define custom node types for the flowchart
+const nodeTypes = { richNode: markRaw(RichNode) };
 
-// Define props
+// Define component properties
 const props = defineProps({
     selectedFlowchart: {
         type: Object,
@@ -37,14 +41,14 @@ const props = defineProps({
     },
 });
 
-// Reference to Vue Flow instance
+// Reference to the Vue Flow instance
 const vueFlowRef = ref(null);
 
-// Nodes and edges
+// Reactive references for nodes and edges in the flowchart
 const nodes = ref([]);
 const edges = ref([]);
 
-// Function to load flowchart data from JSON file
+// Function to load flowchart data from a JSON file
 async function loadFlowchart() {
     try {
         const response = await fetch(props.selectedFlowchart.path);
@@ -52,66 +56,48 @@ async function loadFlowchart() {
         nodes.value = data.nodes;
         edges.value = data.edges;
 
+        // Delay to ensure nodes/edges render, then apply layout
         await nextTick();
-        // Add a slight delay to ensure nodes and edges are rendered
         setTimeout(() => {
             const { layout } = useLayout(vueFlowRef.value.findNode);
             nodes.value = layout(nodes.value, edges.value, 'TB');
-        }, 1);
+        }, 500); // Short delay to trigger layout recalculation
 
-        focusView();
+        focusView(); // Adjust view to fit loaded content
     } catch (error) {
+        // Fallback error node if loading fails
         nodes.value = [
             {
                 id: '1',
                 type: 'output',
-                data: {
-                    label: 'Cannot load flowchart!',
-                },
-                position: {
-                    x: 0,
-                    y: 0,
-                },
+                data: { label: 'Error loading flowchart data. Please try again later.' },
+                position: { x: 0, y: 0 },
             },
         ];
 
         edges.value = [];
-
-        focusView();
-
+        focusView(); // Adjust view to show error message
         console.error('Error loading flowchart:', error);
     }
 }
 
-// Function to focus the view
+// Function to focus the view on specific nodes after loading
 function focusView() {
     nextTick(() => {
         setTimeout(() => {
             if (vueFlowRef.value) {
                 vueFlowRef.value.fitView({
-                    nodes: ['1', '2', '3', '4'],
-                    duration: 2000,
+                    nodes: ['1', '2', '3', '4'], // Focus nodes (adjust if necessary)
+                    duration: 2000, // Transition duration in ms
                 });
             }
-        }, 1500);
+        }, 2000); // Delay to ensure Vue Flow is fully initialized
     });
 }
 
-// Watchers
-watch(
-    () => props.selectedFlowchart,
-    () => {
-        loadFlowchart();
-    },
-    { immediate: true }
-);
-
-watch(
-    () => props.resetTrigger,
-    () => {
-        loadFlowchart();
-    }
-);
+// Watchers to reload flowchart on prop changes
+watch(() => props.selectedFlowchart, loadFlowchart, { immediate: true });
+watch(() => props.resetTrigger, loadFlowchart);
 </script>
 
 <style scoped>

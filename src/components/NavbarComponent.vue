@@ -1,9 +1,10 @@
 <!-- components/NavbarComponent.vue -->
+
 <template>
     <nav class="navbar is-fixed-top has-background">
         <div class="navbar-menu is-active">
             <div class="navbar-start">
-                <!-- Navigation between flowcharts -->
+                <!-- Dropdown for selecting flowcharts -->
                 <div class="navbar-item">
                     <div class="select is-rounded is-halfwidth">
                         <select v-model="selectedFlowchartLocal">
@@ -15,7 +16,7 @@
                 </div>
             </div>
             <div class="navbar-end">
-                <!-- Reset Button -->
+                <!-- Button to reset the flowchart view -->
                 <div class="navbar-item">
                     <button class="button is-primary" @click="resetFlowchart">
                         Reset Flowchart
@@ -29,7 +30,7 @@
 <script setup>
 import { computed } from 'vue';
 
-// Define props
+// Define component properties
 const props = defineProps({
     flowcharts: {
         type: Array,
@@ -41,32 +42,35 @@ const props = defineProps({
     },
 });
 
-// Define emits
+// Define events to emit
 const emit = defineEmits(['flowchart-change', 'reset-flowchart']);
 
-// Computed property for v-model binding
+// Computed property to handle local selection of flowchart with two-way binding
 const selectedFlowchartLocal = computed({
     get() {
         return props.selectedFlowchart;
     },
     set(value) {
-        emit('flowchart-change', value);
+        emit('flowchart-change', value); // Emit event to update selected flowchart
     },
 });
 
-// Method to emit reset event
+// Method to trigger flowchart reset by emitting reset event
 function resetFlowchart() {
     emit('reset-flowchart');
 }
 </script>
 
 <style scoped>
-/* Navbar at the top */
-.navbar.is-fixed-top {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    /* Ensure it stays above other elements */
+/* Customize navbar background color */
+.navbar.has-background {
+    background-color: #333;
+}
+
+/* Style for the reset button */
+.button.is-primary {
+    background-color: #4a90e2;
+    border: none;
+    color: white;
 }
 </style>

@@ -13,12 +13,15 @@
 </template>
 
 <script setup>
-import { ref, watch, nextTick, markRaw } from 'vue';
+import { ref, nextTick, watch, markRaw } from 'vue';
 import { VueFlow } from '@vue-flow/core';
 import { Background } from '@vue-flow/background';
 import { MiniMap } from '@vue-flow/minimap';
 import { Controls } from '@vue-flow/controls';
 import { useLayout } from '../utils/UseLayout.js';
+import {
+    watchDebounced
+} from '@vueuse/core'
 
 import RichNode from "@/components/RichNodeComponent.vue"; // Custom node component
 
@@ -97,7 +100,7 @@ function focusView() {
 
 // Watchers to reload flowchart on prop changes
 watch(() => props.selectedFlowchart, loadFlowchart, { immediate: true });
-watch(() => props.resetTrigger, loadFlowchart);
+watchDebounced(() => props.resetTrigger, loadFlowchart, { debounce: 500, maxWait: 1000 });
 </script>
 
 <style scoped>

@@ -51,15 +51,4 @@ body,
   margin: 0;
   padding: 0;
 }
-
-/* Styles for the flowchart nodes */
-.vue-flow__node-default,
-.vue-flow__node-input,
-.vue-flow__node-output {
-  background: purple !important;
-  color: white !important;
-  border: 1px solid purple !important;
-  border-radius: 4px !important;
-  box-shadow: 0 0 0 1px purple !important;
-}
 </style>

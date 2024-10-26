@@ -3,12 +3,12 @@
         <div class="rich-node container">
             <div class="message-body">
                 <!-- Display the label if it exists in the data -->
-                <div class="block is-size-5" v-if="data.label">
+                <div class="block is-size-5 label" v-if="data.label">
                     <p>{{ data.label }}</p>
                 </div>
 
                 <!-- Display each paragraph from data.paragraphs if available -->
-                <ul class="block is-size-5" v-if="data.paragraphs">
+                <ul class="block is-size-5 paragraphs" v-if="data.paragraphs">
                     <li v-for="(paragraph, index) in data.paragraphs" :key="index">{{ paragraph }}</li>
                 </ul>
 
@@ -60,6 +60,18 @@ export default {
 </script>
 
 <style scoped>
+.rich-node {
+    font-family: 'Sarabun', sans-serif;
+}
+
+.rich-node .label {
+    font-weight: 700; /* Bold */
+}
+
+.rich-node .paragraphs {
+    font-weight: 400; /* Regular */
+}
+
 /* Scoped styles to structure the rich node content layout */
 .rich-node.container {
     padding: 10px;

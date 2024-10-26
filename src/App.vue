@@ -16,8 +16,8 @@ const flowcharts = [
     title: 'HIV Patient Latent Tuberculosis Infection Screening and Treatment',
     path: '/flowcharts/CPG_TPT_PLHIV_v1_20241025.json',
   },
-  { title: 'Flowchart 1', path: '/flowcharts/flowchart1.json' },
-  { title: 'Flowchart 2', path: '/flowcharts/flowchart2.json' },
+  // { title: 'Flowchart 1', path: '/flowcharts/flowchart1.json' },
+  // { title: 'Flowchart 2', path: '/flowcharts/flowchart2.json' },
 ];
 
 // Selected flowchart

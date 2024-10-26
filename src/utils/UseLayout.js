@@ -46,6 +46,8 @@ export function useLayout(findNode) {
             const nodeWithPosition = dagreGraph.node(node.id);
             if (!nodeWithPosition) return node; // Skip nodes that were not processed
 
+            console.log(nodeWithPosition)
+
             return {
                 ...node,
                 targetPosition: isHorizontal ? Position.Left : Position.Top,
